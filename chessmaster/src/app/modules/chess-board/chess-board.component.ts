@@ -16,6 +16,10 @@ export class ChessBoardComponent {
 
   private chessBoard = new ChessBoard();
   public chessBoardView: (FENChar | null)[][] = this.chessBoard.chessBoardView;
+  public get PlayerColor(): Color {return this.chessBoard.playerColor; };
+  //public get safeSquares(): SafeSquares {return this.chessBoard.safeSquares; };
+  public get gameOverMessage(): string|undefined {return this.chessBoard.gameOverMessage;};
+
   private selectedSquare: SelectedSquare = { piece: null };
   private pieceSafeSquares: Coords[] = [];
   private lastMove: LastMove | undefined = this.chessBoard.lastMove;
@@ -25,7 +29,7 @@ export class ChessBoardComponent {
   public isPromotionActive: boolean = false;
   private promotionCoords: Coords|null = null; 
   private promotionPiece: FENChar|null = null; 
-  promotedPiece!: FENChar|null;
+  private promotedPiece!: FENChar|null;
   public promotionPieces(): FENChar[]{
     return this.playerColor === Color.White ?
     [FENChar.WhiteKnight, FENChar.WhiteBishop,FENChar.WhiteRook, FENChar.WhiteQueen]:
@@ -87,6 +91,9 @@ export class ChessBoardComponent {
   }
 
   public selectingPiece(x: number, y: number): void {
+
+    if(this.gameOverMessage !== undefined) return;
+
     const piece: FENChar | null = this.chessBoardView[x][y];
     if (!piece) return;
     if (this.isWrongPieceSelected(piece)) return;

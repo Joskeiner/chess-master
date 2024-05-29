@@ -19,8 +19,11 @@
             <img *ngIf="piece" [src]="pieceImagePaths[piece]" [alt]="piece" class="piece">
 
         </div>
-
     </div>
+
+    <h2 *ngIf="gameOverMessage" class="game-over-message">
+        {{gameOverMessage}}
+    </h2>
 
     <div *ngIf="isPromotionActive" class="promotion-dialog">
         <img *ngFor="let piece of promotionPieces()" [src]="pieceImagePaths[piece]" (click)="promotePiece(piece)">
