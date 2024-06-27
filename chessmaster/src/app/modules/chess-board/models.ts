@@ -11,3 +11,5 @@ type SquareWithoutPiece={
 }
 
 export type SelectedSquare = SquareWithPiece|SquareWithoutPiece;
+
+export const columns = ["a","b","c","d","e","f","g","h"] as const; 
