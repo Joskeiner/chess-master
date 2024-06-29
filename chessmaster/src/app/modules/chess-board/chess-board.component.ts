@@ -36,6 +36,12 @@ export class ChessBoardComponent {
       [FENChar.BlackKnight, FENChar.BlackBishop,FENChar.BlackRook, FENChar.BlackQueen];
   }
 
+  public flipMode: Boolean = false; 
+
+  public flipBoard(): void {
+    this.flipMode = !this.flipMode;
+  }
+
 
   public get safeSquares(): SafeSquares {
     return this.chessBoard.safeSquares;

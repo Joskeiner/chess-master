@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
 Amplify.configure({
   Auth:{
     Cognito:{
-      userPoolId: " ",
+      userPoolId: "",
       userPoolClientId: ""
     }
   }
